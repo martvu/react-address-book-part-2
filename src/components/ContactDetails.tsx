@@ -2,6 +2,7 @@ import { AppContext, BASE_URL } from "../App";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ContactInfo } from "../types";
 import { useContext } from "react";
+import { MapComponent } from "./Map";
 
 function ContactDetails() {
   const { id } = useParams();
@@ -39,6 +40,9 @@ function ContactDetails() {
       </h2>
       <ul>
         <li>
+          <img src={contact.profileImage || "#"} alt="profile image" />
+        </li>
+        <li>
           <p>Street: {contact.street}</p>
         </li>
         <li>
@@ -63,9 +67,14 @@ function ContactDetails() {
           <p>Longitude: {contact.longitude}</p>
         </li>
         <li>
-          <img src={contact.profileImage || "#"} alt="profile image" />
+          <MapComponent
+            latitude={contact.latitude}
+            longitude={contact.longitude}
+            name={contact.firstName}
+          />
         </li>
       </ul>
+
       <div className="contact-links">
         <button onClick={() => handleDelete(contact.id)}>Delete</button>
         <Link to={`/contact/${id}/edit`}>Edit</Link>
