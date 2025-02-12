@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { ContactInfo } from "../types";
 import { AppContext, BASE_URL } from "../App";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 function ContactAddForm() {
