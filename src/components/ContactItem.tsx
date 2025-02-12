@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ContactInfo } from "../types";
+import type { ContactInfo } from "../types";
 
 function ContactItem({ contact }: { contact: ContactInfo }) {
   return (
@@ -8,9 +8,11 @@ function ContactItem({ contact }: { contact: ContactInfo }) {
         <p>
           {contact.firstName} {contact.lastName}
         </p>
-        <Link to={`/contact/${contact.id}`}>
-          <p>View</p>
-        </Link>
+        <div className="contact-links">
+          <Link to={`/contact/${contact.id}`}>
+            <p>View</p>
+          </Link>
+        </div>
       </li>
       <hr />
     </>
